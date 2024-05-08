@@ -23,7 +23,6 @@ zoneIdNew='82025e12-a263-406e-95ca-451cadadc94a'
 responseCategories = (requests.request("GET", getUri, headers=headers, data=payload).json())
 dataCategories = responseCategories['data']
 
-#print (json.dumps(dataCategories[0]))
 
 # Change Zone Id 1:1
 payloadPut = dataCategories[0]
@@ -32,6 +31,7 @@ responsePut = requests.request("PUT", postUri+payloadPut["id"], headers=headers,
 print ("Response code:", responsePut.status_code, '|', payloadPut["name"])
 
 
+# Change all dataCategories
 for category in dataCategories:
     payloadPut = category
     payloadPut["connectorZoneId"] = zoneIdPublic
